@@ -1,7 +1,7 @@
 <div class="container">
    <% @articles.each do |article| %>
    <% if article.published_at != nil %>
-   <div class="blog_title"><%= article.title %></div>
+   <div class="blog_title"><%= link_to article.title, androidblog_path(article),:class=>'title_link' %></div>
    <div class="detail_row">
         <span class="date">
             <%= article.published_at %>

@@ -170,3 +170,16 @@
 	padding:5px 10px;
 	text-align:center
 }
+.submit_comment:hover
+{
+	cursor: pointer;
+	background-color:#125421;
+}
+.title_link:hover
+{
+	text-decoration:underline;
+}
+.title_link
+{
+	color: #000000;
+}
