@@ -15,7 +15,7 @@
     <%= image_tag @article.attachment.url(:large) ,:class=>'attach_img' %>
   </div>
   <div class="content">
-     <%= @article.body %>
+     <%=raw @article.body %>
   </div>
 
   <div class="tags">

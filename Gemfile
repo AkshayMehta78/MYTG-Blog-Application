@@ -51,6 +51,7 @@ gem 'foundation-rails'
 gem 'rails_12factor', group: :production
 
 gem 'heroku'
+gem "ckeditor"
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 # Use ActiveModel has_secure_password

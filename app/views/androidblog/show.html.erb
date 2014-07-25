@@ -8,14 +8,14 @@
       <%= @article.published_at %>
     </span>
     <span class="comment">
-      0 Comments
+      <%= @article.total_comment %> Comments
     </span>
   </div>
 	<div class="attach">
     <%= image_tag @article.attachment.url(:large) ,:class=>'attach_img' %>
   </div>
   <div class="content">
-     <%= @article.body %>
+     <%=raw @article.body %>
   </div>
 
   <div class="tags">
@@ -29,7 +29,7 @@
 
 <div class="comment_container">
   <span class="comment_head">Comments</span>
-  <span class="comment_count">( 0 Comments )</span>
+  <span class="comment_count">(  <%= @article.total_comment %>  Comments )</span>
   <div class="comment_content">
      <% @article.comments.each do |comment| %>
      <span class="commenter">

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+  mount Ckeditor::Engine => '/ckeditor'
   get 'androidblog/index'
 
   devise_for :users

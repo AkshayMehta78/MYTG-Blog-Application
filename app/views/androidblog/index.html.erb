@@ -7,7 +7,7 @@
             <%= article.published_at %>
         </span>
         <span class="comment">
-             0 Comments
+            <%= article.total_comment %> Comments
         </span>
    </div>
    <div class="attach">
@@ -15,7 +15,7 @@
    </div>
    <div class="content">
     <% strip_content=article.body.scan(/.{1,500}/m) %>
-     <%= strip_content[0] << '......' %>
+     <%= raw strip_content[0] << '......' %>
    </div>
    <div class="read_button">
     <%= link_to 'Read More', androidblog_path(article) ,:class=>'read_more' %>
