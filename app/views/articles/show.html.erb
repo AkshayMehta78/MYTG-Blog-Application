@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="blog_title">
+  			<%= @article.title %>
+	</div> 
+
+  <div class="detail_row">
+    <span class="date">
+      <%= @article.published_at %>
+    </span>
+    <span class="comment">
+      0 Comments
+    </span>
+  </div>
+	<div class="attach">
+    <%= image_tag @article.attachment.url(:large) ,:class=>'attach_img' %>
+  </div>
+  <div class="content">
+     <%= @article.body %>
+  </div>
+
+  <div class="tags">
+		<strong class="tag_head">Tags</strong>
+  		<% @article.tags.any? %>
+  		<% @article.tags.each do |tag| %>
+  		<%= link_to tag.name, androidblog_index_url(:tag => tag.name) ,:class=>'tag_name' %>
+		<% end %>
+  </div>
+  <br><br>
+	<%= link_to 'Back', articles_path ,:class=>'button small' %> 	<%= link_to 'Edit', edit_article_path(@article) ,:class=>'button small'%>

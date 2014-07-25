@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "MYTG Blog" %></title>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%# Modernizr is required for Zurb Foundation %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+<nav class="top-bar">
+  <ul class="title-area">
+    <li class="title">
+      MY TRAVEL GENIE
+    </li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="right">
+      <% if user_signed_in? %>
+        <li class="logged_in_msg">Signed in as <%= current_user.email %> Not you?</li>
+        <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+      <% else %>
+        <li><%= link_to "Sign Up",new_user_registration_path %></li> 
+        <li><%= link_to "Sign In", new_user_session_path %></li>
+      <%  end %>
+    </ul>
+  </section>
+</nav>
+
+    <%= yield %>
+  </body>
+</html>

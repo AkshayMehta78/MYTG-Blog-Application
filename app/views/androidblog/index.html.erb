@@ -1,0 +1,27 @@
+<div class="container">
+   <% @articles.each do |article| %>
+   <% if article.published_at != nil %>
+   <div class="blog_title"><%= article.title %></div>
+   <div class="detail_row">
+        <span class="date">
+            <%= article.published_at %>
+        </span>
+        <span class="comment">
+             0 Comments
+        </span>
+   </div>
+   <div class="attach">
+    <%= image_tag article.attachment.url(:large) ,:class=>'attach_img' %>
+   </div>
+   <div class="content">
+    <% strip_content=article.body.scan(/.{1,500}/m) %>
+     <%= strip_content[0] << '......' %>
+   </div>
+   <div class="read_button">
+    <%= link_to 'Read More', androidblog_path(article) ,:class=>'read_more' %>
+   </div>
+   <div class="seperator"></div>
+  <% end %>
+  <% end %>
+</div>
+

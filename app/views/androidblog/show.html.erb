@@ -1,0 +1,81 @@
+<div class="container">
+	<div class="blog_title">
+  			<%= @article.title %>
+	</div> 
+
+  <div class="detail_row">
+    <span class="date">
+      <%= @article.published_at %>
+    </span>
+    <span class="comment">
+      0 Comments
+    </span>
+  </div>
+	<div class="attach">
+    <%= image_tag @article.attachment.url(:large) ,:class=>'attach_img' %>
+  </div>
+  <div class="content">
+     <%= @article.body %>
+  </div>
+
+  <div class="tags">
+		<strong class="tag_head">Tags</strong>
+  		<% @article.tags.any? %>
+  		<% @article.tags.each do |tag| %>
+  		<%= link_to tag.name, androidblog_index_url(:tag => tag.name) ,:class=>'tag_name' %>
+		<% end %>
+  </div>
+
+
+<div class="comment_container">
+  <span class="comment_head">Comments</span>
+  <span class="comment_count">( 0 Comments )</span>
+  <div class="comment_content">
+     <% @article.comments.each do |comment| %>
+     <span class="commenter">
+       <%= comment.commenter %>
+     </span>
+     <span class="commenter_date">
+       <%= comment.created_at.strftime("%d %b. %Y") %>
+     </span>
+     <br>
+     <p class="comment_body">
+       <%= comment.body %>
+     </p>
+     <hr>
+     <% end %>
+</div>
+<p class="add_comment">Leave a Comment</p>
+<div class="new_comment">
+    <%= form_for([@article, @article.comments.build]) do |f| %>
+  <div class="row">
+    <div class="large-2 columns">
+      <%= f.label :Name %>
+    </div>
+    <div class="large-8 columns">
+      <%= f.text_field :commenter ,:placeholder=>'Enter your name',:class=>'input' %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="large-2 columns">
+      <%= f.label :Email %>
+    </div>
+    <div class="large-8 columns">
+      <%= f.text_field :commenter ,:placeholder=>'Enter your Email',:class=>'input' %>
+    </div>
+  </div>
+  <br>
+   <div class="row">
+    <div class="large-2 columns">
+      <%= f.label :Comment %>
+    </div>
+    <div class="large-8 columns">
+      <%= f.text_area :body , :placeholder=>'What\'s on your mind',  :columns=>'25', :rows=>'10',:class=>'input' %>
+    </div>
+  </div>
+  <div class="submit"><%= f.submit :class=>'submit_comment' %></div>
+    <% end %>
+</div>
+</div>
+</div>

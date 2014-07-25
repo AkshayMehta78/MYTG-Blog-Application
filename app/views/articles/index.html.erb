@@ -1,0 +1,32 @@
+<h3>Listing articles</h3>
+
+<div class="new_article"><%= link_to 'New Article', new_article_path, :class=>'article' %>
+<%= link_to 'My Blog', root_path, :class=>'blog' %></div> 
+<br>
+<div class="blog_content">
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th colspan="2"></th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+     <% strip_content=article.body.scan(/.{1,200}/m) %>
+     <td><%= strip_content[0] << '......' %></td>
+      <td><%= link_to 'Show', article_path(article) ,:class=>'button small' %></td>
+      <td><%= link_to 'Edit', edit_article_path(article),:class=>'button small' %></td>
+      <% if article.published_at == nil %>
+      <td><%= link_to "Publish", update_published_at_article_path(article),:class=>'button small'  %></td>
+      <% else %>
+      <td><%= link_to "UnPublish", update_published_at_article_path(article),:class=>'button small'  %></td>
+      <% end %>
+       <td><%= link_to 'Destroy', article_path(article),:class=>'button small',
+                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+</div>
+<%= will_paginate @article %>
