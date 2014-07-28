@@ -1,11 +1,8 @@
 class AddAttachmentAttachmentToArticles < ActiveRecord::Migration
-  def self.up
-    change_table :articles do |t|
-      t.attachment :attachment
-    end
-  end
-
-  def self.down
-    remove_attachment :articles, :attachment
+  def change
+  	add_column :articles, :attachment_file_name, :string
+	add_column :articles, :attachment_content_type, :string
+	add_column :articles, :attachment_file_size, :integer
+	add_column :articles, :attachment_updated_at, :datetime
   end
 end
