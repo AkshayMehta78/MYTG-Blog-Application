@@ -42,7 +42,7 @@ gem 'will_paginate', '~> 3.0'
 
 gem 'acts-as-taggable-on'
 
-gem "paperclip", "~> 4.1"
+gem "paperclip"
 
 gem "haml"
 
