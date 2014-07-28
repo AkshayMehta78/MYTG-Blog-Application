@@ -60,6 +60,11 @@
 	padding:5px 15px;
 	text-align:center;
 }
+.read_more:hover
+{
+	background-color:#125421;
+	color: #ffffff;
+}
 .seperator
 {
 	border-bottom-color:#F37022;
